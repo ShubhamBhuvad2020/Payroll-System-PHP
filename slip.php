@@ -108,7 +108,7 @@
       <div class="row border-bottom border-dark  clearfix">
         <div class="col-6 float-left">
           <div class="col-12">Employee Id:- <?php echo $employee_id; ?></div>
-          <div class="col-12">Email:- <?php echo $email;?></div>
+          <div class="col-12 text-lowercase">Email:- <?php echo $email;?></div>
           <div class="col-12">Location :- <?php echo $city;?></div>
 
         </div>
