@@ -14,6 +14,11 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style.css">
+    <style>
+    body{
+          font-size:20px;}
+    </style>
+    
 </head>
 <body>
     <section id="Main">
@@ -149,20 +154,20 @@
                         include("connection.php");
 
                             //  $result = mysqli_query($conn, "SELECT * FROM employee ORDER BY employee_id ASC"); // using mysqli_query instead
-                            $sql = "SELECT * FROM employee ORDER BY employee_id ASC";
+                            $sql = "SELECT * FROM employee e, department d where e.department = d.department_id ORDER BY employee_id ASC";
                             $result = $conn->query($sql); 
 
-                                echo "<table class='table table-bordered table-hover '><thead class='h5 text-white ' style='background-color: #0a121e;'><tr><th>ID</th><th>Name</th><th>E-mail</th><th>Join Date</th><th>Annual Basic Pay</th><th>Monthly Pay(after_tax)</th><th>Tax</th></tr></thead>";//<th>Export</th>
+                                echo "<table class='table table-bordered table-hover '><thead class='h5 text-white ' style='background-color: #0a121e;'><tr><th>ID</th><th>Name</th><th>E-mail</th><th>Join Date</th><th>Department Name</th><th>Annual Basic Pay</th><th>Salary Slip</th></tr></thead>";//<th>Export</th>
                             while($res = mysqli_fetch_array($result)) { 		
                                 // while($res = $result->fetch_assoc()) {
                                 
-                                echo "<tr><td>" . $res["employee_id"]. "</td><td>" . $res["name"]. "</td><td> " . $res["email"]. "</td><td> " . $res["join_date"]. "</td><td> " . $res["annual_basic_pay"]." &#8377". "</td><td> " . $res["monthly_pay"]." &#8377". "</td><td> " . $res["tax"]." %". "</td></tr>";
+                                echo "<tr><td>" . $res["employee_id"]. "</td><td>" . $res["name"]. "</td><td> " . $res["email"]. "</td><td> " . $res["join_date"]. "</td><td> " . $res["department_name"]. "<td> " . $res["annual_basic_pay"]." &#8377". "</td><td><a class='btn btn-danger' href='slip.php?employee_id=$res[employee_id]'>View</a></td></tr>";
                                 }
                                 echo "</table>";
 
                             
                         ?>
-                        
+            
                     </div>
                 </section>
             </section>
