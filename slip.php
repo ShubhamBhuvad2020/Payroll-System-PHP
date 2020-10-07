@@ -39,7 +39,7 @@
 
     $Total_deduction = $professional_tax + $Provident_fund;
 
-    $net_salary = $Total_earning + $Total_deduction;
+    $net_salary = $Total_earning - $Total_deduction;
    }
 
 
